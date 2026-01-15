@@ -16,6 +16,10 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
       - name: npm install
         run: npm i
         working-directory: wordle-web
@@ -34,4 +38,5 @@ jobs:
           app_location: "/wordle.web/.output/public" # App source code path
           skip_app_build: true
           ###### End of Repository/Build Configurations ######
+
 
