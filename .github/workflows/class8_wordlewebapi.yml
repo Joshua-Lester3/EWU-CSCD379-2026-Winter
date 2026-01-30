@@ -24,13 +24,16 @@ jobs:
           dotnet-version: '10.x'
 
       - name: Build with dotnet
+        working-directory: ./Wordle.Api
         run: dotnet build --configuration Release
 
       - name: dotnet publish
+        working-directory: ./Wordle.Api
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
+        working-directory: ./Wordle.Api
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
@@ -62,4 +65,5 @@ jobs:
           app-name: 'wordlewebapi'
           slot-name: 'Production'
           package: .
+
           
